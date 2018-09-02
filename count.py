@@ -1,6 +1,7 @@
 from tabulate import tabulate
 from bubblesort import bubble_sort_count
 from itersort import iter_sort_count
+from radixsort import radix_sort_count
 from constants import *
 
 
@@ -10,8 +11,8 @@ def verify(array):
             raise(Exception('Not Sorted - {}'.format(array)))
 
 
-variations = [iter_sort_count, bubble_sort_count]
-str_variations = ['iter_sort', 'bubble_sort']
+variations = [iter_sort_count, bubble_sort_count, radix_sort_count]
+str_variations = ['iter_sort', 'bubble_sort', 'radix_sort_count']
 
 table = []
 for i, (name, variation) in enumerate(zip(str_variations, variations)):

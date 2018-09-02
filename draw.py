@@ -3,9 +3,10 @@ import sys, pygame
 from bubblesort import bubble_sort_generator
 from itersort import iter_sort_generator
 from bozosort import bozo_sort_generator
+from radixsort import radix_sort_generator
 from constants import *
 
-algorithm = iter_sort_generator
+algorithm = radix_sort_generator
 
 length = 100
 min = 0
@@ -16,7 +17,7 @@ shuffle(unsorted_array)
 #unsorted_array = reverse
 #unsorted_array = sorted
 
-iterations_per_loop = 10
+iterations_per_loop = 1
 
 size = width, height = 1000, 600
 line_width = int(width/length)
