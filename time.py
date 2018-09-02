@@ -5,6 +5,7 @@ from bubblesort import bubble_sort
 from itersort import iter_sort
 from radixsort import radix_sort
 from mergesort import merge_sort
+from selectionsort import selection_sort
 from constants import *
 
 seed(1000)
@@ -22,8 +23,8 @@ def wrapper(func, *args):
         return [func(x[:]) for x in args[0]]
     return wrapped
 
-variations = [iter_sort, bubble_sort, radix_sort, merge_sort, sorted]
-str_variations = ['iter_sort', 'bubble_sort', 'radix_sort', 'merge_sort','builtin']
+variations = [iter_sort, selection_sort, bubble_sort, radix_sort, merge_sort, sorted]
+str_variations = ['iter_sort', 'selection_sort','bubble_sort', 'radix_sort', 'merge_sort','builtin']
 
 table = []
 for i, (name, variation) in enumerate(zip(str_variations, variations)):

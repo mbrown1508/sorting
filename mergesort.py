@@ -6,8 +6,7 @@ def merge_sort(array):
     to_array = array[:]
     length = len(array)
     jump = 1
-
-    for i in range(1, int(sqrt(length))+2):
+    for i in range(1, determine_levels(len(array)) + 1):
         current_index = 0
 
         index1 = -int(jump)
@@ -54,13 +53,22 @@ def merge_sort(array):
     return from_array
 
 
+def determine_levels(array_length):
+    levels = 0
+    while True:
+        array_length = int(array_length/2)
+        levels += 1
+        if array_length == 0:
+            break
+    return levels
+
 def merge_sort_generator(array):
     from_array = array[:]
     to_array = array[:]
     length = len(array)
     jump = 1
 
-    for i in range(1, int(sqrt(length))+2):
+    for i in range(1, determine_levels(len(array))+1):
         current_index = 0
 
         index1 = -int(jump)
@@ -68,6 +76,7 @@ def merge_sort_generator(array):
 
         for x in range(int(ceil(length/(jump*2)))):
             target_array = []
+            compare_array = []
             start_index = current_index
 
             index1 += int(jump)
@@ -97,18 +106,19 @@ def merge_sort_generator(array):
                     index1 += 1
                     current_index += 1
                 elif from_array[index1] < from_array[index2]:
-                    yield COMPARE, to_array, index1, index2
+                    compare_array.append((index1,index2))
                     target_array.append(index1)
                     index1 += 1
                     current_index += 1
                 else:
-                    yield COMPARE, to_array, index1, index2
+                    compare_array.append((index1, index2))
                     target_array.append(index2)
                     index2 += 1
                     current_index += 1
 
             for i in range(len(target_array)):
-
+                if len(compare_array) > i:
+                    yield COMPARE, to_array, compare_array[i][0], compare_array[i][1]
                 j = target_array[i]
                 to_array[i+start_index], to_array[j] = to_array[j], to_array[i+start_index]
                 target_array = [j if x == (i+start_index) else x for x in target_array]

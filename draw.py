@@ -5,12 +5,14 @@ from itersort import iter_sort_generator
 from bozosort import bozo_sort_generator
 from radixsort import radix_sort_generator
 from mergesort import merge_sort_generator
+from selectionsort import selection_sort_generator
 from constants import *
 
 import time
 
-algorithm = merge_sort_generator
+algorithm = selection_sort_generator
 
+iterations_per_loop = 1
 length = 100
 min = 0
 max = length
@@ -19,8 +21,6 @@ unsorted_array = list(range(length))
 shuffle(unsorted_array)
 #unsorted_array = reverse
 #unsorted_array = sorted
-
-iterations_per_loop = 1
 
 size = width, height = 1000, 600
 line_width = int(width/length)
@@ -40,7 +40,7 @@ generator = algorithm(unsorted_array)
 state = START
 
 while 1:
-    time.sleep(0.05)
+    #time.sleep(0.05)
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
 
@@ -63,6 +63,6 @@ while 1:
             else:
                 color = green
 
-        pygame.draw.line(screen, color,(line_width/2+(x*line_width),height), (line_width/2+(x*line_width),height-(element*scale)), line_width-1)
+        pygame.draw.line(screen, color,(line_width/2+(x*line_width),height), (line_width/2+(x*line_width),height-(element*scale)), line_width)
 
     pygame.display.flip()
