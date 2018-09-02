@@ -4,9 +4,12 @@ from bubblesort import bubble_sort_generator
 from itersort import iter_sort_generator
 from bozosort import bozo_sort_generator
 from radixsort import radix_sort_generator
+from mergesort import merge_sort_generator
 from constants import *
 
-algorithm = radix_sort_generator
+import time
+
+algorithm = merge_sort_generator
 
 length = 100
 min = 0
@@ -37,6 +40,7 @@ generator = algorithm(unsorted_array)
 state = START
 
 while 1:
+    time.sleep(0.05)
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
 

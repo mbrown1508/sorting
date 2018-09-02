@@ -24,6 +24,7 @@ def radix_sort_count(array):
             buckets[bucket].append(x)
             swap += 1
         array = [item for sublist in buckets for item in sublist]
+        swap += len(array)  # This may not be all that accurate... hard to tell
     return array, compare, swap
 
 
