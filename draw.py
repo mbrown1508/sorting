@@ -10,14 +10,16 @@ from constants import *
 
 import time
 
-algorithm = selection_sort_generator
+algorithm = radix_sort_generator
 
 iterations_per_loop = 1
 length = 100
 min = 0
-max = length
+max = 10000
 
-unsorted_array = list(range(length))
+
+unsorted_array = list(randint(0, max) for _ in range(length))
+#unsorted_array = list(range(length))
 shuffle(unsorted_array)
 #unsorted_array = reverse
 #unsorted_array = sorted
@@ -40,7 +42,7 @@ generator = algorithm(unsorted_array)
 state = START
 
 while 1:
-    #time.sleep(0.05)
+    time.sleep(0.01)
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
 
